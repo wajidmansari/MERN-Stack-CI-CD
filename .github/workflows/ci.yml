@@ -37,11 +37,3 @@ jobs:
         scp -i $SSH_KEY -r ./build/* user@server:/var/www/mern-app/
 
 
-        {
-  "scripts": {
-    "lint": "eslint .",
-    "test": "jest",
-    "build": "react-scripts build",
-    "start": "node server.js"
-  }
-}
