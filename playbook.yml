@@ -1,0 +1,19 @@
+- hosts: mern_servers
+  become: yes
+
+  tasks:
+    - name: Install Node.js
+      apt:
+        name: nodejs
+        state: present
+
+    - name: Install MongoDB
+      apt:
+        name: mongodb
+        state: present
+
+    - name: Start MERN Application
+      shell: |
+        cd /app
+        npm install
+        npm start
