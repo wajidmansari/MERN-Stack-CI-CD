@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest",
+    "build": "react-scripts build",
+    "start": "node server.js"
+  }
+}
