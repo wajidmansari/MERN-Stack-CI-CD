@@ -1,19 +1,27 @@
-- hosts: mern_servers
-  become: yes
+name: MERN CI/CD Pipeline
 
-  tasks:
-    - name: Install Node.js
-      apt:
-        name: nodejs
-        state: present
+on:
+  push:
+    branches:
+      - main  # Change to your deployment branch
 
-    - name: Install MongoDB
-      apt:
-        name: mongodb
-        state: present
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Start MERN Application
-      shell: |
-        cd /app
-        npm install
-        npm start
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm test
+
+      - name: Build Application
+        run: npm run build
